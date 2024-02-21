@@ -1,5 +1,5 @@
 ---
-title: Deploing from example
+title: Deploying from example
 keywords: 
 last_updated: Feb 21, 2024
 tags: [getting_started]
