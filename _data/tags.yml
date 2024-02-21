@@ -3,15 +3,26 @@
 # In other words, the last line must be the last tag in the allowed-tags list.
 allowed-tags:
   - getting_started
-  - content_types
-  - navigation
-  - formatting
-  - publishing
-  - single_sourcing
-  - special_layouts
-  - collaboration
-  - news
+  - response_matrix
+  - control_matrix
+  - wavefront_sensor
+  - deformable_mirror
+  - realtime_configuration
+  - performance
+  - optimization
+  - telemetry
+  - logging
+  - monitoring
   - troubleshooting
-  - mobile
+  - predictive_control
+  - pseudo_open_loop
+  - FITS
+  - CPU
+  - GPU
+  - customization
+  - setup
+  - offloading
+  - offsetting
+  - WFS_reference
+  - framework
 
-# Copyright 2021 Google LLC

@@ -1,10 +1,9 @@
 ---
 title: cacao - Getting Situated
-keywords: documentation theme, jekyll, technical writers, help authoring tools, hat replacements
 last_updated: Feb 20, 2024
-tags: [getting_started]
+tags: [getting_started, setup, framework]
 summary: "cacao - Getting Situated"
-sidebar: cacao_sidebar
+sidebar: home_sidebar
 permalink: cacao_getting_situated.html
 folder: cacao
 ---
@@ -78,7 +77,7 @@ cacao-check-cacaovars
 
 The command will fail if not run in a loop's rootdir. Running the command is a good way to check what type of AO loop is configured.
 
-{% include image.html file="cacao-check-cacaovars.png" alt="Jekyll" caption="This is a sample caption" %}
+{% include image.html file="cacao-check-cacaovars.png" caption="This is a sample caption" %}
 
 
 

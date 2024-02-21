@@ -1,7 +1,6 @@
 entries:
-- title: cacao
+- title: Cacao User Guide
   product: cacao
-  version: x.x
   folders:
 
 
@@ -16,7 +15,7 @@ entries:
       output: web
 
     - title: Quick Start
-      url: /cacao_quick_starthtml
+      url: /cacao_quick_start.html
       output: web
 
 
@@ -24,8 +23,8 @@ entries:
     output: web, pdf
     folderitems:
 
-    - title: Downloading
-      url: /cacao_installation_downloading.html
+    - title: Download and Install
+      url: /cacao_download_install.html
       output: web
 
     - title: Tools
@@ -54,9 +53,51 @@ entries:
       output: web
 
 
-
   - title: Getting Situated
-    url: /cacao_getting_situated.html
-    output: web
+    output: web, pdf
+    folderitems:
+
+    - title: Getting Situated
+      url: /cacao_getting_situated.html
+      output: web
 
 
+  - title: Running a loop, steps
+    output: web, pdf
+    folderitems:
+
+    - title: Deploying from an example
+      url: /cacao_deploying_from_example.html
+      output: web
+
+    - title: Start DM and WFS
+      url: /cacao_start_DM_WFS.html
+      output: web
+
+    - title: WFS acquisition
+      url: /cacao_WFSacquisition.html
+      output: web
+
+    - title: Hardware Latency
+      url: /cacao_hardware_latency.html
+      output: web
+
+    - title: Acquiring Linear Response Calibration
+      url: /cacao_acquire_linear_response.html
+      output: web
+
+    - title: Computing Control Matrix
+      url: /cacao_compute_CM.html
+      output: web
+
+    - title: Closing the AO loop
+      url: /cacao_AOloop_run.html
+      output: web
+
+  - title: Loop Tuning & Monitoring
+    output: web, pdf
+    folderitems:
+
+    - title: Monitoring AO loop performance
+      url: /cacao_tuning_monitoring.html
+      output: web
