@@ -1,0 +1,33 @@
+## Topnav single links
+## if you want to list an external url, use external_url instead of url. the theme will apply a different link base.
+topnav:
+- title: Topnav
+  items:
+    - title: GitHub
+      external_url: https://github.com/cacao-org/cacao
+    - title: News
+      url: /news
+
+#Topnav dropdowns
+topnav_dropdowns:
+- title: Topnav dropdowns
+  folders:
+    - title: milk
+      folderitems:
+        - title: milk documentation
+          url: /milk_introduction.html
+    - title: cacao
+      folderitems:
+        - title: cacao documentation
+          url: /cacao_introduction.html
+    - title: Contributing
+      folderitems:
+        - title: Writing Documentation
+          url: /contributing_documentation.html
+        - title: Jekyll documentation theme
+          external_url: https://idratherbewriting.com/documentation-theme-jekyll/index.html
+
+
+
+
+# Copyright 2021 Google LLC
