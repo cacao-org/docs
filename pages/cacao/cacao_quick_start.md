@@ -12,4 +12,4 @@ folder: cacao
 
 [video](https://www.youtube.com/watch?v=58KyvbzAt6w)
 
-cacao demo for MAPS (MMT telescope) simulator
+cacao demo for MAPS (MMT telescope) simulator (video has no audio)
