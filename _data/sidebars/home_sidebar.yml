@@ -101,3 +101,8 @@ entries:
     - title: Monitoring AO loop performance
       url: /cacao_tuning_monitoring.html
       output: web
+
+    - title: Message Logging
+      url: /cacao_message_logging.html
+      output: web
+
