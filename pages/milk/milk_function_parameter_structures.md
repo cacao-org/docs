@@ -7,6 +7,7 @@ summary: "Function Parameter Structures (FPS) hold variables for processes"
 sidebar: home_sidebar
 permalink: milk_function_parameter_structures.html
 folder: milk
+datatable: true
 ---
 
 
@@ -144,25 +145,23 @@ rescan       Rescan fps tree
 
 ## Controlling processes
 
-<pre>
+<div class="datatable-begin"></div>
 
-Command      Description                   Argument(s)
+Command      | Description                  | Argument(s)
+------------ | ---------------------------- | -------- 
+confstart    | Start conf process           | keyword
+confstop     | Stop conf process            | keyword
+confupdate   | Update conf process          | keyword
+confwupdate  | Update conf process, wait for completion before processing next command | keyword
+runstart     | Start run process            |   keyword
+runstop      | Stop run process             |   keyword
+setval       | Set value                    |   keyword, value
+tmuxstart    | Start tmux session           |   keyword
+tmuxstop     | Stop tmux session            |   keyword
+fpsrm        | Remove fps                   |   keyword
 
-confstart     Start conf process            keyword
-confstop      Stop conf process             keyword
-confupdate    Update conf process           keyword
-confwupdate   Update conf process,          keyword
-              wait for completion 
-              before processing 
-              next command
-runstart      Start run process             keyword
-runstop       Stop run process              keyword
-setval        Set value                     keyword, value
-tmuxstart     Start tmux session            keyword
-tmuxstop      Stop tmux session             keyword
-fpsrm         Remove fps                    keyword
+<div class="datatable-end"></div>
 
-</pre>
 
 Only the setval command requires an exact full keyword (for example mfilt-2.loopON). Other commands will only use the first part of the keyword (mfilt-2) and disregard the rest of the keyword, which is then optional.
 
@@ -171,33 +170,39 @@ Only the setval command requires an exact full keyword (for example mfilt-2.loop
 
 ## Getting status
 
-<pre>
-Command      Description                   Argument(s)
- 
-fpswfile      Write fps content to          keyword
-              txt file in datadir
-getval        Get value, write to           keyword
-              output log
-fwrval        Get value, write to           keyword, fname
-              file or fifo
-cntinc        Counter test to check 
-              input fifo connection
-​</pre>
+<div class="datatable-begin"></div>
+
+Command      | Description                  | Argument(s)
+------------ | ---------------------------- | -------- 
+fpswfile     | Write fps content to txt file in datadir | keyword
+getval       | Get value, write to output log | keyword
+fwrval       | Get value, write to file or fifo | keyword, fname
+cntinc       | Counter test to check input fifo connection |
+
+<div class="datatable-end"></div>
+
+
 
 ## Execution Queues and Sequencing
 
 
-<pre>
-Command       Description                   Argument(s)
 
-setqindex     Set queue index               queue index
-setqprio      Set current queue priority    priority
-queueprio     Set any queue priority        queue, priority
-waitonrunON   Toggle wait-on-run ON
-​waitonrunOFF  Toggle wait-on-run OFF
-​waitonconfON  Toggle wait-on-conf ON
-waitonconfOFF Toggle wait-on-conf OFF
-​</pre>
+<div class="datatable-begin"></div>
+
+Command      | Description                  | Argument(s)
+------------ | ---------------------------- | -------- 
+setqindex    | Set queue index              | queue index
+setqprio     | Set current queue priority   | priority
+queueprio    | Set any queue priority       | queue, priority
+waitonrunON  | Toggle wait-on-run ON        | 
+​waitonrunOFF | Toggle wait-on-run OFF       | 
+​waitonconfON | Toggle wait-on-conf ON       | 
+waitonconfOFF| Toggle wait-on-conf OFF      | 
+
+<div class="datatable-end"></div>
+
+
+
 
 
 

@@ -17,13 +17,6 @@ Use the top navigation bar to access main documentation categories.
 
 cacao is a software framework and toolkit for Adaptive Optics control.
 
-### 1. Milk and cacao
-
-## Advanced Control
-
-
-
-
 
 
 

@@ -35,28 +35,6 @@ Last access time   : 2023-09-29 18:17:24.566123595 -1000
 SCRIPT /usr/local/milk/bin/cacao-loops  Success
 </pre>
 
-<span class="label label-default">Default</span>
-<span class="label label-primary">Primary</span>
-<span class="label label-success">Success</span>
-<span class="label label-info">Info</span>
-<span class="label label-warning">Warning</span>
-<span class="label label-danger">Danger</span>
-
-
-{% include note.html content="This is a Note
-" %}
-
-
-{% include tip.html content="This is a Note
-" %}
-
-{% include warning.html content="This is a Note
-" %}
-
-{% include important.html content="This is a Note
-" %}
-
-
 
 
 # Running Commands

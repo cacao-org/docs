@@ -14,6 +14,32 @@ folder:
 This documentation uses markdown syntax, with enhancements.
 See [Jekyll theme instructions](https://idratherbewriting.com/documentation-theme-jekyll/index.html) for details.
 
+Example custom syntax:
+
+
+<span class="label label-default">Default</span>
+<span class="label label-primary">Primary</span>
+<span class="label label-success">Success</span>
+<span class="label label-info">Info</span>
+<span class="label label-warning">Warning</span>
+<span class="label label-danger">Danger</span>
+
+
+{% include note.html content="This is a Note
+" %}
+
+
+{% include tip.html content="This is a Note
+" %}
+
+{% include warning.html content="This is a Note
+" %}
+
+{% include important.html content="This is a Note
+" %}
+
+
+
 Use the "Edit me" button at the top of the page (below title), or edit the .md file in a local copy of the documentation, following usual git practices.
 
 # Building the documentation page
