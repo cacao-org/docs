@@ -4,11 +4,12 @@ keywords:
 last_updated: Mar 4, 2024
 tags: [downloading]
 summary: "Downloading and Installing cacao"
-sidebar: cacao_sidebar
-permalink: cacao_installation_downloading.html
+sidebar: home_sidebar
+permalink: cacao_download_install.html
 folder: cacao
 ---
 
+To be written.
 
 
 {% include links.html %}
