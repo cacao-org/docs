@@ -1,39 +1,31 @@
 ---
-title: cacao
-keywords: documentation theme, jekyll, technical writers, help authoring tools, hat replacements
-last_updated: Feb 20, 2024
-tags: [getting_started]
-summary: "cacao"
+title: Image streams
+keywords: streams
+last_updated: Mar 4, 2024
+tags: [streams]
+summary: "Numerical data (images, vectors, matrices) are stored in shared memory for low-latency read/write by real-time processes"
 sidebar: home_sidebar
-permalink: cacao_about.html
-folder: cacao
+permalink: milk_image_streams.html
+folder: milk
 ---
 
-cacao (Compute and Control for Adaptive Optics) deploys and manages processes for real-time control of adaptive optics systems, and provides user interfaces to interact with them.
 
-{% include note.html content="
-cacao is a plugin of milk. Commands inherited from milk start with milk- while cacao-specific commands start with cacao-.
-" %}
+# Rationale
 
+Numerical data (images, vectors, matrices) are stored in shared memory for low-latency read/write by real-time processes. They are embedded in a structure containing, in addition to the data itself, the corresponding metadata (for example, image size, data type), as well as semaphores and counters for synchronization. This is implemented with the ImageStreamIO library.
 
 
-cacao is built around 3 types of data structures, provided by milk, and hosted on the system's shared memory :
-- Streams contain numerical data (images, matrices and vectors) for real-time use
-- Function Parameter Structures (FPS) provide interface to variables and parameters
-- Process Info (procinfo) provide control and status of real-time processes
+# Data Synchronization
+
+By embedding semaphores and counters within the data stream structure, milk combines modularity with high low-latency data synchronization between processes.
+
+{% include image.html file="milk_streams.svg" 
+caption="Synchronization between data (streams) and processes" %}
 
 
-To view and interact with stream, FPS and procinfo structures, run:
+A processing pipeline is a chain of individual processes connected together by data streams. Each process can have multiple input and output streams, but has a single triggering input (usually the semaphore of an input data stream).
 
-```bash
-milk-streamCTRL
-milk-fpsCTRL
-milk-procCTRL
-```
-
-{% include note.html content="
-To learn more about a milk or cacao command, run it with the -h argument. 
-" %}
+This modular architecture allows for deployment of complex data processing pipelines across multiple CPU cores, and even between multiple computers. Each process can be hosted on an individual CPU core, or span multiple cores.
 
 
 {% include links.html %}
