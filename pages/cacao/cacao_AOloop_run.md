@@ -6,6 +6,9 @@ tags: [CPU, GPU]
 summary: "Running the AO loop: processes."
 sidebar: home_sidebar
 permalink: cacao_AOloop_run.html
+complex_map: true
+map_name: runcacaoloopmap
+box_number: 3
 folder: cacao
 ---
 

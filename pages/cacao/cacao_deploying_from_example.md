@@ -6,6 +6,9 @@ tags: [getting_started]
 summary: "Deploying from example"
 sidebar: home_sidebar
 permalink: cacao_deploying_from_example.html
+complex_map: true
+map_name: runcacaoloopmap
+box_number: 1
 folder: cacao
 ---
 

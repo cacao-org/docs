@@ -6,6 +6,9 @@ tags: [control_matrix]
 summary: "Control matrix"
 sidebar: home_sidebar
 permalink: cacao_compute_CM.html
+complex_map: true
+map_name: runcacaoloopmap
+box_number: 2
 folder: cacao
 ---
 

@@ -6,6 +6,9 @@ tags: [getting_started]
 summary: "WFS acquisition"
 sidebar: home_sidebar
 permalink: cacao_WFSacquisition.html
+complex_map: true
+map_name: runcacaoloopmap
+box_number: 1
 folder: cacao
 ---
 

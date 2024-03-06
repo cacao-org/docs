@@ -6,6 +6,9 @@ tags: [getting_started]
 summary: "Starting DM and WFS"
 sidebar: home_sidebar
 permalink: cacao_start_DM_WFS.html
+complex_map: true
+map_name: runcacaoloopmap
+box_number: 1
 folder: cacao
 ---
 

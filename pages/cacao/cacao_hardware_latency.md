@@ -5,6 +5,9 @@ tags: [performance]
 summary: "Measuring hardware latency, the time delay between DM actuation commands and WFS response measured"
 sidebar: home_sidebar
 permalink: cacao_hardware_latency.html
+complex_map: true
+map_name: runcacaoloopmap
+box_number: 2
 folder: cacao
 ---
 
