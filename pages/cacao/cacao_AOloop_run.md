@@ -47,11 +47,11 @@ cacao-aorun-070-cmval2dm start
 ## Closing the loop and setting loop parameters with mfilt
 
 ```bash
-Set loop gain
+# Set loop gain
 cacao-fpsctrl setval mfilt loopgain 0.1
-Set loop mult
+# Set loop mult
 cacao-fpsctrl setval mfilt loopmult 0.98
-Close loop
+# Close loop
 cacao-fpsctrl setval mfilt loopON ON
 ```
 
