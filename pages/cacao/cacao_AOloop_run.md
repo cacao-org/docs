@@ -26,7 +26,7 @@ cacao-fpsctrl setval mvalC2dm GPUindex 99
 ## Start WFS -> mode coefficient values
 
 ```bash
-ccacao-aorun-050-wfs2cmval start
+cacao-aorun-050-wfs2cmval start
 ```
 
 
