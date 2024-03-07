@@ -9,37 +9,7 @@ permalink: cacao_message_logging.html
 folder: cacao
 ---
 
-{% include note.html content="
-cacao is a plugin of milk. Commands inherited from milk start with milk- while cacao-specific commands start with cacao-.
-" %}
-
-# Conventions and Notations (reminder)
-
-Environment variables are capital, and follow the syntax `$CACAO_ENVVARNAME`.  Commands are colored in green, and follow the syntax milk_cmdname or cacao_cmdname for milk and cacao commands respectively.
-
-<pre>
-Environment variable
-Description
-Notes
-$CACAO_LOOPROOTDIR
-Loop main directory, from which all commands should be run unless otherwise noted.
-Run all commands from this directory
-$CACAO_LOOPRUNDIR
-Subdirectory of the root directory where processes are running.
-​
-$CACAO_LOOPNUMBER
-Loop number index (integer)
-Written if file LOOPNUMBER within root directory
-$CACAO_LOOPNAME
-Loop name (string)
-Written in file LOOPNAME within root directory
-
-</pre>
-
-
-
-
-# Low-level (verbose) message Logs from fpsCTRL
+## 1. Low-level (verbose) message Logs from fpsCTRL
 
 
 cacao's fpsCTRL writes a log in `$CACAO_LOOPROOTDIR/fpsCTRL.log`
@@ -81,7 +51,9 @@ When using cacao's automatic deployment framework, `$CACAO_LOOPROOTDIR/fpsCTRL.l
 " %}
 
 
-# Daily Message Logs
+## 2. Daily Message Logs
+
+### 2.1. Setting up daily message logging
 
 fpsCTRL.log is quite verbose and includes multiple DEBUG statements. It is also non-persistent (lost upon reboot). The `cacao-msglogCTRL` command should be run to process this low-level log into a more useful daily log. This is started with:
 
@@ -170,7 +142,7 @@ cacao-msglogCTRL stop
 ~~~
 `cacao-msglogCTRL` will process all low-level log entries since the beginning of the day (UT), and write them in the daily fpsCTRL log. The cacao daily log will however only include commands entered while `cacao-msglogCTRL` is running.
 
-# Viewing the daily fpsCTRL message log in real time
+### 2.2. Viewing the daily fpsCTRL message log in real time
 
 Processing of the low-level fpsCTRL log to the daily log is running within a tmux session. To view the output in real time, with colors:
 
@@ -180,7 +152,7 @@ tmux a -t fpsCTRLlog-$CACAO_LOOPNAME-out-vispyr2
 
 {% include image.html file="fpsCTRLlog-daily-tmux.png" caption="Content of fpsCTRL processing tmux session" %}
 
-# Adding custom log entries to the daily cacao log
+### 2.3. Adding custom log entries to the daily cacao log
 
 The `cacao-log` command adds custom log entries. To add a single entry in the daily cacao log:
 
