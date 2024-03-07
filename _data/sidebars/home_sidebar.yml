@@ -53,12 +53,16 @@ entries:
       output: web
 
 
-  - title: Getting Situated
+  - title: cacao framework
     output: web, pdf
     folderitems:
 
     - title: Getting Situated
       url: /cacao_getting_situated.html
+      output: web
+
+    - title: Processes
+      url: /cacao_processes.html
       output: web
 
 
