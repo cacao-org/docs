@@ -12,14 +12,14 @@ topnav:
 topnav_dropdowns:
 - title: Topnav dropdowns
   folders:
-    - title: milk
-      folderitems:
-        - title: milk documentation
-          url: /milk_introduction.html
-    - title: cacao
+    - title: User Guide
       folderitems:
         - title: cacao documentation
-          url: /cacao_introduction.html
+          url: /cacao_about.html
+    - title: Examples
+      folderitems:
+        - title: cacao by example
+          url: /cacao_examples.html
     - title: Contributing
       folderitems:
         - title: Writing Documentation

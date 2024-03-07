@@ -4,7 +4,7 @@ keywords: documentation
 last_updated: Mar 4, 2024
 tags: [documentation]
 summary: "Writing Documentation"
-sidebar: home_sidebar
+sidebar: userguide_sidebar
 permalink: contributing_documentation.html
 folder: 
 ---

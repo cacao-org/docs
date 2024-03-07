@@ -4,7 +4,7 @@ keywords:
 last_updated: Feb 21, 2024
 tags: [getting_started]
 summary: "The WFS linear response to DM perturbation is acquired by actuation of the DM while recording WFS telemetry."
-sidebar: home_sidebar
+sidebar: userguide_sidebar
 permalink: cacao_acquire_linear_response.html
 complex_map: true
 map_name: runcacaoloopmap

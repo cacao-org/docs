@@ -3,7 +3,7 @@ title: cacao - Getting Situated
 last_updated: Feb 20, 2024
 tags: [getting_started, setup, framework]
 summary: "cacao - Getting Situated"
-sidebar: home_sidebar
+sidebar: userguide_sidebar
 permalink: cacao_getting_situated.html
 folder: cacao
 ---

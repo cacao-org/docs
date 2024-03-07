@@ -4,7 +4,7 @@ keywords:
 last_updated: Feb 21, 2024
 tags: [CPU, GPU]
 summary: "Running the AO loop: processes."
-sidebar: home_sidebar
+sidebar: userguide_sidebar
 permalink: cacao_AOloop_run.html
 complex_map: true
 map_name: runcacaoloopmap

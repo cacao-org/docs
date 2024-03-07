@@ -4,7 +4,7 @@ keywords: documentation theme, jekyll, technical writers, help authoring tools, 
 last_updated: Feb 20, 2024
 tags: [getting_started]
 summary: "milk overview."
-sidebar: milk_sidebar
+sidebar: userguide_sidebar
 permalink: milk_about.html
 folder: milk
 ---

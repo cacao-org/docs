@@ -4,7 +4,7 @@ keywords:
 last_updated: Mar 4, 2024
 tags: [getting_started]
 summary: "Function Parameter Structures (FPS) hold variables for processes"
-sidebar: home_sidebar
+sidebar: userguide_sidebar
 permalink: milk_function_parameter_structures.html
 folder: milk
 datatable: true

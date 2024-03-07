@@ -4,7 +4,7 @@ keywords: streams
 last_updated: Mar 4, 2024
 tags: [streams]
 summary: "Numerical data (images, vectors, matrices) are stored in shared memory for low-latency read/write by real-time processes"
-sidebar: home_sidebar
+sidebar: userguide_sidebar
 permalink: milk_image_streams.html
 folder: milk
 ---

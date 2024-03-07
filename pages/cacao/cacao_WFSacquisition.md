@@ -4,7 +4,7 @@ keywords:
 last_updated: Feb 21, 2024
 tags: [getting_started]
 summary: "WFS acquisition"
-sidebar: home_sidebar
+sidebar: userguide_sidebar
 permalink: cacao_WFSacquisition.html
 complex_map: true
 map_name: runcacaoloopmap

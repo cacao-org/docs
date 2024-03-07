@@ -4,7 +4,7 @@ keywords: logging
 last_updated: Mar 4, 2024
 tags: [logging]
 summary: "Logging messages"
-sidebar: home_sidebar
+sidebar: userguide_sidebar
 permalink: cacao_message_logging.html
 folder: cacao
 ---

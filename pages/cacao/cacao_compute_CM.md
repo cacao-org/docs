@@ -4,7 +4,7 @@ keywords:
 last_updated: Feb 21, 2024
 tags: [control_matrix]
 summary: "Control matrix"
-sidebar: home_sidebar
+sidebar: userguide_sidebar
 permalink: cacao_compute_CM.html
 complex_map: true
 map_name: runcacaoloopmap

@@ -4,7 +4,7 @@ keywords: processes
 last_updated: Mar 6, 2024
 tags: [processes]
 summary: "A cacao loop is a collection of interconnected processes, each performing a step of the AO loop"
-sidebar: home_sidebar
+sidebar: userguide_sidebar
 datatable: true
 permalink: cacao_processes.html
 folder: cacao

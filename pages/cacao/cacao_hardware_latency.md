@@ -3,7 +3,7 @@ title: Hardware Latency
 last_updated: Feb 21, 2024
 tags: [performance]
 summary: "Measuring hardware latency, the time delay between DM actuation commands and WFS response measured"
-sidebar: home_sidebar
+sidebar: userguide_sidebar
 permalink: cacao_hardware_latency.html
 complex_map: true
 map_name: runcacaoloopmap

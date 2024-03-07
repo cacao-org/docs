@@ -4,7 +4,7 @@ tags: [content_types]
 keywords: cacao series, connected articles, tutorials, hello world
 last_updated: July 3, 2016
 summary: "You can automatically link together topics belonging to the same series. This helps users know the context within a particular process."
-sidebar: cacao_sidebar
+sidebar: userguide_sidebar
 permalink: cacao_series.html
 folder: cacao
 ---

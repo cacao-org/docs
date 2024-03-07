@@ -1,42 +1,42 @@
 entries:
-- title: Cacao User Guide
-  product: cacao
+- title: cacao by example
+  product: cacao - Examples
   folders:
 
 
 
 
-  - title: Overview
+  - title: Basic
     output: web, pdf
     folderitems:
 
-    - title: About
+    - title: Example 1
       url: /cacao_about.html
       output: web
 
-    - title: Quick Start
+    - title: Example 2
       url: /cacao_quick_start.html
       output: web
 
 
-  - title: Installation & Setup
+  - title: Calibration
     output: web, pdf
     folderitems:
 
-    - title: Download and Install
+    - title: Example 3
       url: /cacao_download_install.html
       output: web
 
-    - title: Tools
+    - title: Example 4
       url: /cacao_installation_tools.html
       output: web
 
-    - title: Realtime System Configuration
+    - title: Example 5
       url: /cacao_realtime_system_configuration.html
       output: web
 
 
-  - title: Building Blocks (milk)
+  - title: Advanced
     output: web, pdf
     folderitems:
 

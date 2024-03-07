@@ -3,7 +3,7 @@ title: Quick Start
 last_updated: Feb 21, 2024
 tags: [getting_started]
 summary: "Quick start: deploy a basic AO control loop"
-sidebar: home_sidebar
+sidebar: userguide_sidebar
 permalink: cacao_quick_start.html
 folder: cacao
 ---

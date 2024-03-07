@@ -4,7 +4,7 @@ keywords:
 last_updated: Mar 4, 2024
 tags: [realtime]
 summary: "Configuring the computer system for realtime performance"
-sidebar: home_sidebar
+sidebar: userguide_sidebar
 permalink: cacao_realtime_system_configuration.html
 folder: cacao
 ---

@@ -3,7 +3,7 @@ title: Modal Stats TUI
 last_updated: Feb 21, 2024
 tags: [monitoring, performance, optimization, pseudo_open_loop]
 summary: "The modal stats TUI provides a mode-by-mode telemetry snapshot"
-sidebar: home_sidebar
+sidebar: userguide_sidebar
 permalink: cacao_tuning_monitoring.html
 folder: cacao
 ---
