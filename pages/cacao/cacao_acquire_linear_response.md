@@ -84,7 +84,7 @@ The output is a FITS cube, written to ./conf/RMmodesWFS/<name>.WFSresp.fits. For
 # ./conf/ZpokeC.5.WFSresp.fits
 # ./conf/TipTiltFoc.WFSresp.fits
 cacao-aorun-030-acqlinResp -n 4 HpokeC
-cacao-aorun-030-acqlinResp -n 10 ZpokeC.5
+cacao-aorun-030-acqlinResp -n 10 ZpokesC.5
 cacao-aorun-030-acqlinResp -n 30 TipTiltFoc
 </pre>
 {{site.data.alerts.end}}
