@@ -110,3 +110,6 @@ entries:
       url: /cacao_message_logging.html
       output: web
 
+    - title: Predictive Control
+      url: /cacao_predictive_control.html
+      output: web
