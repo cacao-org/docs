@@ -14,6 +14,37 @@ folder: cacao
 
 ## 1. Overview
 
+### 1.1. Computation Units
+
+cacao runs a collection of computation units to perform all required operations. A computation unit performs a specific computation step in the AO loop, such as extracting modal coefficients from the WFS signal stream.
+
+Each computation unit consists of a function parameter structure (FPS) holding the parameters for the computation, and a tmux sesssion within which code is executed. Two processes can run within a computation unit: the configuration process that manages function parameters, and the run process that executes the computation (often a loop in a real-time environment). The configuration and run processes are executed in tmux windows 1 and 2, with window 0 reserved for housekeeping.
+
+
+### 1.2. Selecting Computation Units
+
+The user must first select which cacao computation units (CUs) will be deployed.
+
+Computations units are registered by adding entries in the `cacaovars.bash` file. For example, the following entry will register the mlat (measure latency) CU:
+~~~bash
+export CACAO_FPSPROC_MLAT="ON"
+~~~
+
+During deployment, the `cacao-fpslistadd` script is called to add registered CUs to the `fpslist` file. The script calls all instances of `cacao-fpslistadd-` scripts, each one handling a single process registration. For example, the mlat process is registered by `cacao-fpslistadd-MLAT`, which will test if the CACAO_FPSPROC_MLAT environment variable is set to ON, and register the process if it is.
+
+`cacao-fpslistadd` is typically not called directly by the user, but is part of the `cacao-setup` (which reads the `cacaovars.bash` file prior to calling `cacao-fpslistadd`). The full list of registered computation units available, and their status (registered ?) can be inspected by running :
+~~~bash
+source cacaovars.LOOPNAME.bash; cacao-fpslistadd -l
+~~~
+Registered CUs will be labeled as ON, while others are labeled as OFF.
+
+
+
+
+
+
+
+### 1.3. Process categories
 
 <div class="row">
 
