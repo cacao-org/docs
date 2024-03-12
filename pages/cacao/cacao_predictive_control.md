@@ -63,6 +63,13 @@ cacao-aorun-080-testOL -w 1.0
 cacao-aorun-080-testOL -w 0.1
 ~~~
 
+To inspect how well the pOL telemetry is reconstructed (probe and pOL should match):
+~~~bash
+gnuplot
+plot [0:] "vispyr2-rundir/testOL.log" u 1:2 w l title "probe", "vispyr2-rundir/testOL.log" u ($1):5 title "psOL", "vispyr2-rundir/testOL.log" u ($1):3 title "DM"
+quit
+~~~
+
 
 
 
