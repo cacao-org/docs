@@ -33,13 +33,9 @@ In this example, there are 6 blocks of modes. The first block may be allocated t
 
 Predictive control operates in modal space on pseudo-open loop (pOL) telemetry. pOL telemetry is reconstructed by adding DM corrections and WFS measurements with the appropriate time latency. 
 
-The `mfilt.comp.OLmodes` entry must be activated within the `mfilt` compute unit:
+The `mfilt.comp.OLmodes` entry must be activated within the `mfilt` compute unit.
 
-~~~bash
-cacao-fpsctrl setval mfilt auxDMmval.enable ON
-cacao-fpsctrl setval mfilt auxDMmval.mixfact 1.0
-cacao-fpsctrl setval mfilt auxDMmval.modulate OFF
-~~~
+
 
 Accurate pOL telemetry is imperative for predictive control. The main sources of error in reconstructing pOL are WFS optical gain and DM-WFS latency. These are set as follows:
 ~~~bash
@@ -57,6 +53,12 @@ Change these two parameters until getting a good pOL match. To do so, close the 
 cacao-fpsctrl setval mfilt loopgain 0.03
 cacao-fpsctrl setval mfilt loopmult 0.999
 
+# testOL sends probes to auxDMval, so it needs to be enabled
+cacao-fpsctrl setval mfilt auxDMmval.enable ON
+cacao-fpsctrl setval mfilt auxDMmval.mixfact 1.0
+cacao-fpsctrl setval mfilt auxDMmval.modulate OFF
+
+
 cacao-aorun-080-testOL -w 1.0
 
 # repeat multiple times to converge to correct parameters
@@ -68,6 +70,23 @@ To inspect how well the pOL telemetry is reconstructed (probe and pOL should mat
 gnuplot
 plot [0:] "vispyr2-rundir/testOL.log" u 1:2 w l title "probe", "vispyr2-rundir/testOL.log" u ($1):5 title "psOL", "vispyr2-rundir/testOL.log" u ($1):3 title "DM"
 quit
+~~~
+
+Once tuned, the pOL telemetry is accurately capturing input disturbances on stream `aolX_modevalOL`.
+
+
+### 1.3. Running predictive filter computation
+
+Start process mctrlstats to split telemetry into blocks.
+
+~~~bash
+cacao-aorun-120-mstat start
+~~~
+
+Start mkPFXX-Y processes.
+~~~bash
+cacao-aorun-130-mkPF 0 start
+cacao-aorun-130-mkPF 1 start
 ~~~
 
 
