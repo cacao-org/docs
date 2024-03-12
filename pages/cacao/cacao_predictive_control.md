@@ -31,9 +31,35 @@ In this example, there are 6 blocks of modes. The first block may be allocated t
 
 ### 1.2. Pseudo-Open Loop Telemetry
 
-Predictive control operates in modal space on pseudo-open loop telemetry. The `mfilt.comp.OLmodes` entry must be activated within the `mfilt` compute unit.
+Predictive control operates in modal space on pseudo-open loop (pOL) telemetry. pOL telemetry is reconstructed by adding DM corrections and WFS measurements with the appropriate time latency. 
+
+The `mfilt.comp.OLmodes` entry must be activated within the `mfilt` compute unit:
+
+~~~bash
+cacao-fpsctrl setval mfilt auxDMmval.enable ON
+cacao-fpsctrl setval mfilt auxDMmval.mixfact 1.0
+cacao-fpsctrl setval mfilt auxDMmval.modulate OFF
+~~~
+
+Accurate pOL telemetry is imperative for predictive control. The main sources of error in reconstructing pOL are WFS optical gain and DM-WFS latency. These are set as follows:
+~~~bash
+cacao-fpsctrl setval mfilt comp.WFSfact 0.8
+cacao-fpsctrl setval mfilt comp.latencysoftwfr 1.5
+~~~
 
 
+
+
+
+~~~bash
+cacao-fpsctrl setval mfilt loopgain 0.03
+cacao-fpsctrl setval mfilt loopmult 0.999
+
+cacao-aorun-080-testOL -w 1.0
+
+# repeat multiple times to converge to correct parameters
+cacao-aorun-080-testOL -w 0.1
+~~~
 
 
 
