@@ -49,8 +49,9 @@ cacao-fpsctrl setval mfilt comp.latencysoftwfr 1.5
 
 `WFSfact` is the multiplicative factor applied to WFS signals (compared to the response matrix calibration). For example, here, the modal reconstruction is 0.8 times the actual optical disturbance. This is also refered to as the sensor optical gain.
 
+`latencysoftwfr` is the software latency, which is summed with the hardware latency to yield the total latency. The hardware latency (parameter `latencyhardwfr`) is measured by the `mlat` compute unit - do not change it.
 
-
+Change these two parameters until getting a good pOL match. To do so, close the loop and run the `cacao-aorun-080-testOL` script. Change the values of `WFSfact` and `latencysoftwfr` to get a good match for a range of `loopgain` and `loopmult` values representing both WFS-dominated (low gain, loopmult close to 0.0) and DM-dominated (high gain, loopmult close to 1.0) conditions.
 
 ~~~bash
 cacao-fpsctrl setval mfilt loopgain 0.03
