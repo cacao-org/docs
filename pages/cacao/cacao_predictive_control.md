@@ -10,7 +10,9 @@ folder: cacao
 ---
 
 
-## 1. Compute Units to be registered (file `cacaovars.bash`)
+## 1. Configuration
+
+### 1.1. Compute Units to be registered (file `cacaovars.bash`)
 
 To enable predictive control, the following compute units must be enabled:
 - `CACAO_FPSPROC_MKPF`: Build predictive control filter(s)
@@ -25,7 +27,13 @@ export CACAO_FPSPROC_MKPF="ON"
 export CACAO_FPSPROC_APPLYPF="ON"
 ~~~
 
-## 2. Configuration
+In this example, there are 6 blocks of modes. The first block may be allocated to Tip+Tilt, and subsequent blocks may handle groups of 100 modes for example.
+
+### 1.2. Pseudo-Open Loop Telemetry
+
+Predictive control operates in modal space on pseudo-open loop telemetry. The `mfilt.comp.OLmodes` entry must be activated within the `mfilt` compute unit.
+
+
 
 
 
