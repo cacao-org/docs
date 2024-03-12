@@ -75,13 +75,15 @@ quit
 Once tuned, the pOL telemetry is accurately capturing input disturbances on stream `aolX_modevalOL`.
 
 
-### 1.3. Running predictive filter computation
+### 1.3. Running predictive filter computation (training)
 
 Start process mctrlstats to split telemetry into blocks.
 
 ~~~bash
 cacao-aorun-120-mstat start
 ~~~
+
+The process writes pOL telemetry buffers named `aolX_modevalOLbuff_blkYY`, where X is the loop number and YY is the block index.
 
 Start mkPFXX-Y processes.
 ~~~bash
@@ -90,6 +92,27 @@ cacao-aorun-130-mkPF 1 start
 ~~~
 
 
+
+
+### 1.3. Running predictive filter computation (inference)
+
+Compute modal solution using predictive filters:
+~~~bash
+cacao-aorun-140-applyPF 0 start
+cacao-aorun-140-applyPF 1 start
+~~~
+
+The predicted wavefront coefficients are written in stream `aolX_modevalPF`. To apply them to the AO correction, enable 
+
+~~~bash
+cacao-fpsctrl setval mfilt PF.enable ON
+
+# should match inference number of blocks
+cacao-fpsctrl setval mfilt PF.NBblock 2
+
+# mixing coeff between PF and non-PF solutions
+cacao-fpsctrl setval mfilt PF.mixcoeff 0.3
+~~~
 
 
 
