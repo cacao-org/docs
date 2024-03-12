@@ -10,6 +10,8 @@ folder: cacao
 ---
 
 
+## 1. Compute Units to be registered (file `cacaovars.bash`)
+
 To enable predictive control, the following compute units must be enabled:
 - `CACAO_FPSPROC_MKPF`: Build predictive control filter(s)
 - `CACAO_FPSPROC_APPLYPF`: Apply predictive control filter(s)
@@ -22,6 +24,9 @@ export CACAO_PF_NBBLOCK=6
 export CACAO_FPSPROC_MKPF="ON"
 export CACAO_FPSPROC_APPLYPF="ON"
 ~~~
+
+## 2. Configuration
+
 
 
 
