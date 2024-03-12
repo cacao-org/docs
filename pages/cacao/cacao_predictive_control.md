@@ -47,6 +47,7 @@ cacao-fpsctrl setval mfilt comp.WFSfact 0.8
 cacao-fpsctrl setval mfilt comp.latencysoftwfr 1.5
 ~~~
 
+`WFSfact` is the multiplicative factor applied to WFS signals (compared to the response matrix calibration). For example, here, the modal reconstruction is 0.8 times the actual optical disturbance. This is also refered to as the sensor optical gain.
 
 
 
