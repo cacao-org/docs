@@ -19,10 +19,10 @@ allowed-tags:
   - FITS
   - CPU
   - GPU
+  - CU
   - customization
   - setup
   - offloading
   - offsetting
   - WFS_reference
   - framework
-

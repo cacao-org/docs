@@ -61,8 +61,8 @@ entries:
       url: /cacao_getting_situated.html
       output: web
 
-    - title: Processes
-      url: /cacao_processes.html
+    - title: Compute Units
+      url: /cacao_compute_units.html
       output: web
 
 

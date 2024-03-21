@@ -1,12 +1,12 @@
 ---
-title: cacao processes
-keywords: processes
-last_updated: Mar 6, 2024
-tags: [processes]
+title: Compute Units
+keywords: CU
+last_updated: Mar 13, 2024
+tags: [CU]
 summary: "A cacao loop is a collection of interconnected processes, each performing a step of the AO loop"
 sidebar: userguide_sidebar
 datatable: true
-permalink: cacao_processes.html
+permalink: cacao_compute_units.html
 folder: cacao
 ---
 
@@ -14,37 +14,41 @@ folder: cacao
 
 ## 1. Overview
 
-### 1.1. Computation Units
+### 1.1. Compute Unit (CU)
 
-cacao runs a collection of computation units to perform all required operations. A computation unit performs a specific computation step in the AO loop, such as extracting modal coefficients from the WFS signal stream.
+cacao runs a collection of compute units to perform all required operations. A compute unit performs a specific step of the AO loop, such as extracting modal coefficients from the WFS signal stream.
 
-Each computation unit consists of a function parameter structure (FPS) holding the parameters for the computation, and a tmux sesssion within which code is executed. Two processes can run within a computation unit: the configuration process that manages function parameters, and the run process that executes the computation (often a loop in a real-time environment). The configuration and run processes are executed in tmux windows 1 and 2, with window 0 reserved for housekeeping.
+Each <a href="#" data-toggle="tooltip" data-original-title="{{site.data.glossary.compute_unit}}">CU</a>  consists of a function parameter structure (FPS) holding the parameters for the computation, and a tmux sesssion within which code is executed. Two processes can run within a CU: the configuration process that manages function parameters, and the run process that executes the computation (often a loop in a real-time environment). The configuration and run processes are executed in tmux windows 1 and 2, with window 0 reserved for housekeeping.
 
 
-### 1.2. Selecting Computation Units
+### 1.2. Selecting CUs
 
-The user must first select which cacao computation units (CUs) will be deployed.
+The user must first select which CUs will be deployed.
 
-Computations units are registered by adding entries in the `cacaovars.bash` file. For example, the following entry will register the mlat (measure latency) CU:
+<a href="#" data-toggle="tooltip" data-original-title="{{site.data.glossary.compute_unit}}">CUs</a> are registered by adding entries in the `cacaovars.bash` file. For example, the following entry will register the mlat (measure latency) CU:
 ~~~bash
 export CACAO_FPSPROC_MLAT="ON"
 ~~~
 
-During deployment, the `cacao-fpslistadd` script is called to add registered CUs to the `fpslist` file. The script calls all instances of `cacao-fpslistadd-` scripts, each one handling a single process registration. For example, the mlat process is registered by `cacao-fpslistadd-MLAT`, which will test if the CACAO_FPSPROC_MLAT environment variable is set to ON, and register the process if it is.
+During deployment, the `cacao-fpslistadd` script is called to add registered CUs to the `fpslist.txt` ASCII file. The script calls all instances of `cacao-fpslistadd-` scripts, each one handling a single CU registration. For example, the mlat process is registered by `cacao-fpslistadd-MLAT`, which will test if the `CACAO_FPSPROC_MLAT` environment variable is set to ON, and register the CU if so.
 
-`cacao-fpslistadd` is typically not called directly by the user, but is part of the `cacao-setup` (which reads the `cacaovars.bash` file prior to calling `cacao-fpslistadd`). The full list of registered computation units available, and their status (registered ?) can be inspected by running :
+`cacao-fpslistadd` is typically not called directly by the user, but is part of the `cacao-setup` (which reads the `cacaovars.bash` file prior to calling `cacao-fpslistadd`). The full list of registered CUs available, and their status (registered ?) can be inspected by running :
 ~~~bash
 source cacaovars.LOOPNAME.bash; cacao-fpslistadd -l
 ~~~
 Registered CUs will be labeled as ON, while others are labeled as OFF.
 
 
+{% include note.html content="
+Command `cacao-fpslistadd` scans for scripts matching `cacao-fpslistadd-*` and `milk-fpslistadd-*` both  in the milk intallation bin directory and the current directory. If deploying a custom CU (named for example CUSTOMCU), users should ensure the corresponding `cacao-fpslistadd-CUSTOMCU` is in the LOOPROOTDIR directory where `cacao-fpslistadd` is to be run.
+" %}
 
 
 
 
 
-### 1.3. Process categories
+
+### 1.3. CU categories
 
 <div class="row">
 

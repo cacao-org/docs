@@ -50,8 +50,8 @@ cacao-fpsctrl setval mfilt comp.latencysoftwfr 1.5
 Change these two parameters until getting a good pOL match. To do so, close the loop and run the `cacao-aorun-080-testOL` script. Change the values of `WFSfact` and `latencysoftwfr` to get a good match for a range of `loopgain` and `loopmult` values representing both WFS-dominated (low gain, loopmult close to 0.0) and DM-dominated (high gain, loopmult close to 1.0) conditions.
 
 ~~~bash
-cacao-fpsctrl setval mfilt loopgain 0.03
-cacao-fpsctrl setval mfilt loopmult 0.999
+cacao-fpsctrl setval mfilt loopgain 0.1
+cacao-fpsctrl setval mfilt loopmult 0.98
 
 # testOL sends probes to auxDMval, so it needs to be enabled
 cacao-fpsctrl setval mfilt auxDMmval.enable ON
@@ -65,12 +65,15 @@ cacao-aorun-080-testOL -w 1.0
 cacao-aorun-080-testOL -w 0.1
 ~~~
 
-To inspect how well the pOL telemetry is reconstructed (probe and pOL should match):
+To inspect how well the pOL telemetry is reconstructed (probe and pOL should match).
 ~~~bash
 gnuplot
-plot [0:] "vispyr2-rundir/testOL.log" u 1:2 w l title "probe", "vispyr2-rundir/testOL.log" u ($1):5 title "psOL", "vispyr2-rundir/testOL.log" u ($1):3 title "DM"
+plot [0:] "vispyr2-rundir/testOL.log" u 1:2 w l lw 2 title "probe", "vispyr2-rundir/testOL.log" u ($1):3 w l lw 2 title "psOL", "vispyr2-rundir/testOL.log" u ($1):4 w l lw 2 title "residual"
 quit
 ~~~
+
+{% include image.html file="psOLreconstruction_testOL.png" caption="gnuplot output: After convergence, probe and psOL match" %}
+
 
 Once tuned, the pOL telemetry is accurately capturing input disturbances on stream `aolX_modevalOL`.
 
@@ -102,7 +105,12 @@ cacao-aorun-140-applyPF 0 start
 cacao-aorun-140-applyPF 1 start
 ~~~
 
-The predicted wavefront coefficients are written in stream `aolX_modevalPF`. To apply them to the AO correction, enable 
+The predicted wavefront coefficients are written in stream `aolX_modevalPF`. 
+
+
+### 1.4. Applying PF solution to AO control loop
+
+To apply them to the AO correction, enable PF in mfilt:
 
 ~~~bash
 cacao-fpsctrl setval mfilt PF.enable ON
@@ -113,6 +121,10 @@ cacao-fpsctrl setval mfilt PF.NBblock 2
 # mixing coeff between PF and non-PF solutions
 cacao-fpsctrl setval mfilt PF.mixcoeff 0.3
 ~~~
+
+The PF solution (predicted OL modal coefficients) is mixed with the non-predictive control.
+
+
 
 
 
