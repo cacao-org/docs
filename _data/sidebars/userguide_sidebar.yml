@@ -110,6 +110,14 @@ entries:
       url: /cacao_message_logging.html
       output: web
 
+    - title: WFS referemce
+      url: /cacao_wfsref.html
+      output: web
+
+    - title: Control Modes
+      url: /cacao_control_modes.html
+      output: web
+
     - title: Predictive Control
       url: /cacao_predictive_control.html
       output: web
