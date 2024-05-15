@@ -192,9 +192,9 @@ Unless the target modes are constructed from the control modes, it is gererally 
 
 The figure below shows the resulting control modes in DM space.
 
-
 {% include image.html file="cacao_controlmodes_CMmodesDM_forced.png"
 caption="Control modes (DM) forced to match automatic target modes (Zernke + Fourier)" %}
+
 
 {% include note.html content="
 The first two modes are not perfectly orthogonal in DM space (the tip-tilt angles are not exactly 90 deg off), as orthonormality is enforced in WFS space, not in DM space.
@@ -214,6 +214,8 @@ caption="The location of the diagonal around which non-zero values cluster in ma
 
 
 
+
+
 ### 4.2. Handling DM edges
 DM shape is controlled within the area defined by dmmask, and extrapolated beyond it. To avoid the unconstrained edges of the DM from exhibiting large excursions, extrapolation parameters can be tuned in the script.
 
@@ -225,14 +227,14 @@ If providing custom target DM modes, ensure they are properly extrapolated to av
 
 
 
-## 5. Constructing CM by blocks
+## 5. Constructing CM by modal blocks
 
 The CM may be contructed by blocks, where each block is set of modes over which a separate CM is computed. The multiple block-CMs are then merged into a single CM.
 
 
 This approach is useful to implement modal control, where the first control modes are forced to be low-order wavefront modes (for example, having the first two modes be tip and tilt).
 
-### 5.1. Modal basis
+### 5.1. Constructing the modal basis
 
 A modal basis is first created, or can be provided by the user. Modal blocks will be defined by picking modes from this basis. For example, to create a modal basis where the first 5 modes are Zerkines (tip, tilt, focus , astig (x2)), followed by Fourier modes of increasing spatial frequency:
 
@@ -242,7 +244,21 @@ cacao-aorun-028-mkZFmodes -c0 0 -c1 16 -c 40 -ea 1.0 -t 1.0 -a 0.0
 # File written to conf/RMmodesDM/modesZF.fits
 ```
 
+
 With this basis, we will be able to select the first two modes as the first block to control tip-tilt, and define blocks according to spatial frequency.
+
+The "ea" (edge apodization) parameter, together with the DM mask (file `conf/dmmask.fits`), define how modes are constructed to handle edge effect. Active DM actuators, defined by value=1 in dmmask, will be set to the analytical expression of the mode (here, a Zernike polynomial or a sine wave). For actuators outside the active area, the analytical form is convolved by a kernel of size proportional to the distance to the nearest ative actuators. The proportionality coefficient, set by parameter "-ea", sets the degree to which the edge-softening is applied.
+
+
+{% include image.html file="cacao_modes_pre_edgeapo.png"
+caption="From left to right: dmmask, mode 0 (tip), mode 50, and mode 100. The modes are shown here prior to edge apodization" %}
+
+{% include image.html file="cacao_modes_edgeapo.png"
+caption="Modes 0 (left), 50 (center) and 100 (right) of the modesZF.fits file. The degree of edge apodization increases from top to bottom, wich ea parameter values 0.2 (top), 1.0 (middle) and 5.0  (bottom)" %}
+
+
+The edge apodization algorithm is designed to primarly attenuate high spatial frequencies while extrapolating low-order modes beyond the DM active area.
+
 
 ### 5.2. Modal response matrix
 
@@ -259,7 +275,7 @@ cacao-aorun-030-acqlinResp -n 6 modesZF
 ```
 
 
-### 5.3. Computing the CM
+### 5.3. Computing the block-CMs
 
 
 We can now compute the CM for each block using the `cacao-aorun-039-compstrCM` script. The following options will be used:
@@ -299,11 +315,16 @@ cacao-aorun-039-compstrCM -mb 02 -mr 11:50 -marg 00:01
 
 # block 03: HO modes, marginalized against TT, LO, M)
 cacao-aorun-039-compstrCM -mb 03 -mr 51:1249 -marg 00:01:02
+```
 
+### 5.4. Merging block-CMs into a single CM
+
+The `cacao-aorun-039-compstrCM1` merge step will both combine block-CMs into a single file, and load it to shared memory.
+
+```bash
 # Merge
 cacao-aorun-039-compstrCM -mbm 00:01:02:03
 ```
-
 
 
 
