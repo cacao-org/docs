@@ -224,4 +224,88 @@ If providing custom target DM modes, ensure they are properly extrapolated to av
 
 
 
+
+## 5. Constructing CM by blocks
+
+The CM may be contructed by blocks, where each block is set of modes over which a separate CM is computed. The multiple block-CMs are then merged into a single CM.
+
+
+This approach is useful to implement modal control, where the first control modes are forced to be low-order wavefront modes (for example, having the first two modes be tip and tilt).
+
+### 5.1. Modal basis
+
+A modal basis is first created, or can be provided by the user. Modal blocks will be defined by picking modes from this basis. For example, to create a modal basis where the first 5 modes are Zerkines (tip, tilt, focus , astig (x2)), followed by Fourier modes of increasing spatial frequency:
+
+```bash
+# Create modal basis for RM acquisition
+cacao-aorun-028-mkZFmodes -c0 0 -c1 16 -c 40 -ea 1.0 -t 1.0 -a 0.0
+# File written to conf/RMmodesDM/modesZF.fits
+```
+
+With this basis, we will be able to select the first two modes as the first block to control tip-tilt, and define blocks according to spatial frequency.
+
+### 5.2. Modal response matrix
+
+The modal response matrix cen be computed by multiplying the modal basis by the zonal response matrix, or it can be acquired.
+
+To acquire it, poking the modes themselves on the DM:
+
+
+```bash
+# Acquire modal RM
+cacao-fpsctrl setval measlinresp timing.NBave 5
+cacao-fpsctrl setval measlinresp timing.NBexcl 5
+cacao-aorun-030-acqlinResp -n 6 modesZF
+```
+
+
+### 5.3. Computing the CM
+
+
+We can now compute the CM for each block using the `cacao-aorun-039-compstrCM` script. The following options will be used:
+- mode block tag (-mb option). This is the name of the block. We can use integers ("00", "01", "02" ...) to keep track of the mode block ordering, or use more descrptive tags ("TT", "LO", "MO", "HO")
+- mode block range (-mr option), specifying the set of modes to be selected for the block. For example, "1:5" will select the first 5 modes. Note the numbering starts at 1 (first mode = 1, not 0).
+- set of blocks against which the current block should be marginalized (-marg option). While the SVD-based pseudoinverse ensures, whithin each block, that control modes are orthogonal in WFS space, it will not handle possible overlap between blocks. For example, if block "00" is tip-tilt, and we need to ensure that the current block does not contain tip-tilt, we add the "-marg 00" option to marginalize the current block against block "00". Multiple blocks can be specified, separated by ":".
+
+When all block-CMs are computed, they are merged by running `cacao-aorun-039-compstrCM` with the "-mbm" option, specifying the set of blocks to be merged. For example, "-mbm 00:01:03:04" will merge blocks 00, 01, 03 and 04.
+
+Example:
+
+```bash
+# Compute CM
+# Use GPU for all CMs
+cacao-fpsctrl setval compstrCM GPUdevice 0
+# Use SVD limit 0.1 for all CMs
+cacao-fpsctrl setval compstrCM svdlim 0.1
+
+# Compute CM for tip-tilt (first 2 modes of modesZF, so use range = 1:2)
+# Write output to mode block 00
+cacao-aorun-039-compstrCM -mb 00 -mr 1:2
+# output files:
+# ./conf/CMmodesWFS/CMmodesWFS.00.fits
+# ./conf/CMmodesDM/CMmodesDM.00.fits
+
+# block 01: LO modes, marginalized against TT
+cacao-aorun-039-compstrCM -mb 01 -mr 3:10 -marg 00
+# output files:
+# ./conf/RMmodesWFS/RMmodesWFS.01.fits.m00
+# ./conf/RMmodesDM/RMmodesDM.01.fits.m00
+# ./conf/CMmodesWFS/CMmodesWFS.01.fits
+# ./conf/CMmodesDM/CMmodesDM.01.fits
+# Note the .m00 at the end of the RM filenames, indicating marginalization against block 00
+
+# block 02: MO modes, marginalized against TT and LO
+cacao-aorun-039-compstrCM -mb 02 -mr 11:50 -marg 00:01
+
+# block 03: HO modes, marginalized against TT, LO, M)
+cacao-aorun-039-compstrCM -mb 03 -mr 51:1249 -marg 00:01:02
+
+# Merge
+cacao-aorun-039-compstrCM -mbm 00:01:02:03
+```
+
+
+
+
+
 {% include links.html %}
