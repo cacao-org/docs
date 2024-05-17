@@ -1,0 +1,34 @@
+entries:
+- title: Tech Notes
+  product: cacao - Tech Notes
+  folders:
+
+
+  - title: Overview
+    output: web, pdf
+    folderitems:
+
+    - title: About
+      url: /cacao_technotes_about.html
+      output: web
+
+
+
+
+  - title: Compute Hardware
+    output: web, pdf
+    folderitems:
+
+    - title: Requirements
+      url: /cacao_comphardw_requirements.html
+      output: web
+
+
+  - title: Real-time OS
+    output: web, pdf
+    folderitems:
+
+    - title: Linux Kernel
+      url: /cacao_RTlinux.html
+      output: web
+
