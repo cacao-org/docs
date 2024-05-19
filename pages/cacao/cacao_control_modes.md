@@ -10,6 +10,9 @@ folder: cacao
 ---
 
 
+
+
+
 ## 1. Introduction
 
 Cacao implements modal control, where the input signal (WFS image for example) is linearly decomposed as a sum of modes. The coefficients of this decomposition represent the input measurement in the control modal space. The coefficients are then processed to compute a modal control command.
@@ -17,6 +20,22 @@ Cacao implements modal control, where the input signal (WFS image for example) i
 At the heart of the modal control are the control modes, a set of modes with corresponding representations in input (WFS) and output (DM) spaces. What should these modes be ?
 
 A few options are discussed here, ordered with increasing complexity and performance.
+
+
+## 1.1. CACAO control modes format and conventions
+
+Control modes are stored are stored as corresponding pairs of WFS-space and DM-space modes, with file names `conf/CMmodesWFS/CMmodesWFS.fits` and `conf/CMmodesDM/CMmodesDM.fits` respectively.
+
+
+{% include warning.html content="
+By convention, cacao expects the DM modes to be scaled to correspond to an excitation of unity amplitude in the WFS space. WFS-space amplitude is defined as the sum-squared value of the signal (imWFS2) over the WFS pixel mask area.
+" %}
+
+{% include note.html content="
+WFS-space mode amplitudes can be rescaled to unity by process wfs2cmodeval if option.MODENORM is set to ON (this is the default setting), in which case WFS-space modes CMmodesWFS.fits scaling is irrelevant.
+" %}
+
+
 
 
 
