@@ -20,8 +20,13 @@ The time delay between issuing a command to the DM and having the corresponding 
 cacao-aorun-020-mlat -w
 ```
 
-Check the result in fpsCTRL TUI, and by plotting the latency measurement curve. Inside the "loopname-rootdir", find a directory named "loopname-rundir", and execute the commands below:
+Check the result in fpsCTRL TUI, fields `.out.framerateHz` and `.out.latencyfr`.
 
+The latency value is estimated by locating the maximum value of the latency curve, where the y-coordinate is the sum-squared difference between two consecutive WFS frames and the x-axis coordinate is the time difference between the WFS difference measurement and the time at which the DM command was issued.
+
+The file is written on `fps.mlat-0.datadir/hardwlatency.dat` (for LOOPNUMBER 0), with columns 2 and 3 the x and y coordinate of the curve.
+
+To view the curve:
 ```bash
 # Still from the ROOTDIR
 cacao-aorun-021-mlatshow
