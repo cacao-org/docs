@@ -27,12 +27,8 @@ A few options are discussed here, ordered with increasing complexity and perform
 Control modes are stored are stored as corresponding pairs of WFS-space and DM-space modes, with file names `conf/CMmodesWFS/CMmodesWFS.fits` and `conf/CMmodesDM/CMmodesDM.fits` respectively.
 
 
-{% include warning.html content="
-By convention, cacao expects the DM modes to be scaled to correspond to an excitation of unity amplitude in the WFS space. WFS-space amplitude is defined as the sum-squared value of the signal (imWFS2) over the WFS pixel mask area.
-" %}
-
 {% include note.html content="
-WFS-space mode amplitudes can be rescaled to unity by process wfs2cmodeval if option.MODENORM is set to ON (this is the default setting), in which case WFS-space modes CMmodesWFS.fits scaling is irrelevant.
+By convention, cacao expects the modes to be of unity amplitude in the DM space: the RMS pixel value within active DM pixels (dmmask) should be 1.0. Modal coefficient values then represent the amplitude of WF modes in the unit adopted to control the DM.
 " %}
 
 
