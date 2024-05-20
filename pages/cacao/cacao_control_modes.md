@@ -298,7 +298,6 @@ We can now compute the CM for each block using the `cacao-aorun-039-compstrCM` s
 - mode block range (-mr option), specifying the set of modes to be selected for the block. For example, "1:5" will select the first 5 modes. Note the numbering starts at 1 (first mode = 1, not 0).
 - set of blocks against which the current block should be marginalized (-marg option). While the SVD-based pseudoinverse ensures, whithin each block, that control modes are orthogonal in WFS space, it will not handle possible overlap between blocks. For example, if block "00" is tip-tilt, and we need to ensure that the current block does not contain tip-tilt, we add the "-marg 00" option to marginalize the current block against block "00". Multiple blocks can be specified, separated by ":".
 
-When all block-CMs are computed, they are merged by running `cacao-aorun-039-compstrCM` with the "-mbm" option, specifying the set of blocks to be merged. For example, "-mbm 00:01:03:04" will merge blocks 00, 01, 03 and 04.
 
 Example:
 
@@ -332,9 +331,22 @@ cacao-aorun-039-compstrCM -mb 02 -mr 11:50 -marg 00:01
 cacao-aorun-039-compstrCM -mb 03 -mr 51:1249 -marg 00:01:02
 ```
 
+Marginalization (`-marg` option) is performed in WFS space. To perform marginalization in DM space, use option `-margDM`. For example, to marginalize against the first two DM modes (usually tip-tilt) in DM space as well as previous blocks in WFS space, the command may be:
+
+```bash
+cacao-aorun-039-compstrCM -mb 01 -mr 3:10 -marg 00 -margDM
+```
+
+{% include important.html content="
+When specifying both DM-space and WFS-space modal marginalization, the DM-space marginalization will always be performed first, and the WFS-space marginalization second, regardless of the order in which the options have been entered.
+" %}
+
+
 ### 5.4. Merging block-CMs into a single CM
 
-The `cacao-aorun-039-compstrCM1` merge step will both combine block-CMs into a single file, and load it to shared memory.
+The `cacao-aorun-039-compstrCM` merge step will both combine block-CMs into a single file, and load it to shared memory.
+
+When all block-CMs are computed, they are merged by running `cacao-aorun-039-compstrCM` with the "-mbm" option, specifying the set of blocks to be merged. For example, "-mbm 00:01:03:04" will merge blocks 00, 01, 03 and 04.
 
 ```bash
 # Merge

@@ -52,6 +52,10 @@ entries:
       url: /milk_processinfo.html
       output: web
 
+    - title: Data logging
+      url: /milk_streamlogging.html
+      output: web
+
 
   - title: cacao framework
     output: web, pdf
