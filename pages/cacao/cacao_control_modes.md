@@ -28,7 +28,7 @@ Control modes are stored are stored as corresponding pairs of WFS-space and DM-s
 
 
 {% include note.html content="
-By convention, cacao expects the modes to be of unity amplitude in the DM space: the RMS pixel value within active DM pixels (dmmask) should be 1.0. Modal coefficient values then represent the amplitude of WF modes in the unit adopted to control the DM.
+By convention, cacao expects the modes to be of unity amplitude in DM space: the RMS pixel value within active DM pixels (dmmask) should be 1.0. Modal coefficient values then represent the amplitude of WF modes in the unit adopted to control the DM.
 " %}
 
 
