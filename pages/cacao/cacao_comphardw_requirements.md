@@ -17,6 +17,8 @@ The most compute-heavy operation in closing the AO loop is often the matrix-vect
 
 The MVM is most often memory-bandwidth limited, so when choosing the compute hardware (for example GPU), the device's memory bandwidth is the most relevant parameter. This is described in [this MVM technical note](https://docs.nvidia.com/deeplearning/performance/dl-performance-matrix-multiplication/index.html), where N=1 (Matrix-vector multiply, special case of matrix-matrix multiply), K is the number of WFS elements, and M is the number of modes reconstructed, or in zonal control, the number of DM actuators.
 
+One must look at the arithmetic intensity, which is a crucial concept used to measure the efficiency of computational algorithms and applications. It is defined as the ratio of the number of floating-point operations (FLOPs) to the amount of data movement (usually measured in bytes).
+
 Taking, for example, a large system with 87k input pixels, 33k output modes :
 
 ```
