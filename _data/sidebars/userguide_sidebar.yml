@@ -118,8 +118,12 @@ entries:
       url: /cacao_wfsref.html
       output: web
 
-    - title: Control Modes
+    - title: Building Control Modes
       url: /cacao_control_modes.html
+      output: web
+
+    - title: Optimizing Control Modes
+      url: /cacao_optimizing_control_modes.html
       output: web
 
     - title: Predictive Control
