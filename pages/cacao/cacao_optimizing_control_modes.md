@@ -88,12 +88,12 @@ The simplest approach is to join all control modes, pasting together all blocks.
 ```bash
 cacao-aorun-039-compstrCM -mbm 00:01:02:03:04
 ```
-This is almost always a **bad approach**, as modes are generally not orthogonal in WFS space between blocks, so we will encounter the <span class="label label-danger">DM modes cross-talk</span> issue between modes belonging to different blocks.
+This is almost always a **bad approach**, as modes are generally not orthogonal in WFS space between blocks, so we will encounter cross-talk between modes belonging to different blocks.
 
 
 ### 2.2. Marginalizing in WFS space
 
-To address the <span class="label label-danger">DM modes cross-talk</span> issue, we can enforce that each mode block is marginalized against previous blocks in WFS space. In this example, we also enforce that the first two modes are pure tip and tilt.
+To address the modes cross-talk issue, we can enforce that each mode block is marginalized against previous blocks in WFS space. In this example, we also enforce that the first two modes are pure tip and tilt.
 
 
 ```bash
