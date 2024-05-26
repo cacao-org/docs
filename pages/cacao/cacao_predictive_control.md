@@ -31,9 +31,9 @@ In this example, there are 6 blocks of modes. The first block may be allocated t
 
 ### 1.2. Pseudo-Open Loop Telemetry
 
-Predictive control operates in modal space on pseudo-open loop (pOL) telemetry. pOL telemetry is reconstructed by adding DM corrections and WFS measurements with the appropriate time latency. 
+Predictive control operates in modal space on pseudo-open loop (pOL) telemetry. pOL telemetry is reconstructed by adding DM corrections and WFS measurements with the appropriate time latency.
 
-The `mfilt.comp.OLmodes` entry must be activated within the `mfilt` compute unit.
+The `mfilt.comp.OLmodes` and `mfilt.comp.tbuff` entries must be activated within the `mfilt` compute unit.
 
 
 
@@ -47,7 +47,7 @@ cacao-fpsctrl setval mfilt comp.latencysoftwfr 1.5
 
 `latencysoftwfr` is the software latency, which is summed with the hardware latency to yield the total latency. The hardware latency (parameter `latencyhardwfr`) is measured by the `mlat` compute unit - do not change it.
 
-Change these two parameters until getting a good pOL match. To do so, close the loop and run the `cacao-aorun-080-testOL` script. Change the values of `WFSfact` and `latencysoftwfr` to get a good match for a range of `loopgain` and `loopmult` values representing both WFS-dominated (low gain, loopmult close to 0.0) and DM-dominated (high gain, loopmult close to 1.0) conditions.
+Change these two parameters until getting a good pOL match. To do so, close the loop and run the `cacao-aorun-080-testOL` script. Change the values of `mfilt.comp.WFSfact` and `mfilt.comp.latencysoftwfr` to get a good match for a range of `mfilt.loopgain` and `mfilt.loopmult` values representing both WFS-dominated (low gain, loopmult close to 0.0) and DM-dominated (high gain, loopmult close to 1.0) conditions.
 
 ~~~bash
 cacao-fpsctrl setval mfilt loopgain 0.1
@@ -62,6 +62,8 @@ cacao-fpsctrl setval mfilt auxDMmval.modulate OFF
 cacao-aorun-080-testOL -w 1.0
 
 # repeat multiple times to converge to correct parameters
+cacao-aorun-080-testOL -w 0.1
+cacao-aorun-080-testOL -w 0.1
 cacao-aorun-080-testOL -w 0.1
 ~~~
 

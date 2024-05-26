@@ -129,3 +129,7 @@ entries:
     - title: Predictive Control
       url: /cacao_predictive_control.html
       output: web
+
+    - title: Zonal Filtering
+      url: /cacao_zonalfiltering.html
+      output: web

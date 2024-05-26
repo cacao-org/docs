@@ -34,6 +34,11 @@ From left to right:
 - DM/OL: Ratio between DM RMS and pseudo-openloop RMS. Green if >0.5.
 
 
+{% include important.html content="
+Pseudo-open-loop telemetry needs to be activated for the OL-related entries. To activate, turn on `mfilt.comp.tbuff` and `mfilt.comp.OLmodes`.
+" %}
+
+
 ## Loop tuning guidelines
 
 Check out that the limit is not clipping correction. The modal limit should ideally be set low enough to clip outliers and prevent the loop from running out, but high enough so that truncation is infrequent.
