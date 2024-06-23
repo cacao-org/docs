@@ -126,6 +126,10 @@ entries:
       url: /cacao_optimizing_control_modes.html
       output: web
 
+    - title: Measuring modal response (selfRM)
+      url: /cacao_selfRM.html
+      output: web
+
     - title: Predictive Control
       url: /cacao_predictive_control.html
       output: web
