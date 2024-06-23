@@ -16,16 +16,16 @@ folder: cacao
 
 ### 1.1. Overview
 
-The `selfRM` refers to the measured modal response matrix. This is a 3D file, written as a FITS file. The axes are x: measured WFS mode, y: excited DM mode, and z: time step after excitation command is sent. The `selfRM` is acquired which the `mfilt` compute unit.
+The `selfRM` refers to the measured modal response matrix. This is a 3D file, written as a FITS file. The axes are x: measured WFS mode, y: excited DM mode, and z: time step after excitation command is sent. The `selfRM` is acquired within the `mfilt` compute unit.
 
 {% include tip.html content="
-`selfRM` is very useful for diagnostics of an AO loop, both in open loop (gain=0) and close loop. It is recommended to run it before attempting to close the loop to check the DM and WFS modes are self-consistent. A clean diagonal signal is `selfRM` is almost certainly indicating that the loop will close with good performance.
+`selfRM` is very useful for diagnostics of an AO loop, both in open loop (gain=0) and close loop. It is recommended to run it before attempting to close the loop to check the DM and WFS modes are self-consistent. A clean diagonal signal in `selfRM` is almost certainly indicating that the loop will close with good performance.
 " %}
 
 
 
 
-{% include warning.html content="The modal control loop should be closed for `selfTM` acquisition. To acquire the open loop `selfRM`, set loop gain to zero.
+{% include warning.html content="The modal control loop should be closed for `selfTM` acquisition (`mfilt` should be running with loop ON). To acquire the open loop `selfRM`, set loop gain to zero.
 " %}
 
 
@@ -67,7 +67,7 @@ The sequence is designed so that, over a set of 8 iterations:
 - for each mode, there are four possible pairs of sequences: `++`, `--`, `+-`, and `-+`, with each of these pairs occurring exactly twice
 - for each mode, for each pair of sequences (occurs twice in the 8 iterations), the preceeding mode sequences are opposite in the two occurences. For example, in the example above, for mode m2, the `+-` sequence occurs twice, at iterations 0 (for which the preceeding m1 sequence pair is `+-`) and 7 (for which the preceeding m1 sequence pair is `-+`)
 
-These poke patterns are designed to minimize temporal bleeding effects between modes, ensuring the measurement is as clean as possible and immune to poke-induced vibrations. Assuming linearity, the temporal signature of pairs mode m1 `+-` and `-+` will be opposite, so that when added they will not contribute to the measurement of mode m2 `+-`.
+These poke patterns are designed to balance temporal bleeding effects between modes, ensuring the measurement is as clean as possible and immune to poke-induced vibrations. Assuming linearity, the temporal signature of pairs mode m1 `+-` and `-+` will be opposite, so that when added they will not contribute to the measurement of mode m2 `+-`.
 
 {% include tip.html content="
 To take full advantage of the sign-balancing propeeties of the poke sequence, the number of iteration `mfilt.selfRM.nbiter` should be set to a multiple of 8.
