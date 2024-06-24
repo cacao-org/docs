@@ -43,7 +43,7 @@ In close loop (gain>0), the diagonal should fade with slice (loop iteration afte
 
 ### 1.3. Poke sequence
 
-The number of iterations is set by parameter `mfilt.selfRM.nbiter`. Within each iteration, the mode index is iterated from 0 to `mfilt.selfRM.NBmode`-1 (note: clipped at the total number of control modes, so user can enter very large value to ensure all modes a probed).
+The number of iterations is set by parameter `mfilt.selfRM.nbiter`. Within each iteration, the mode index is iterated from 0 to `mfilt.selfRM.NBmode`-1 (note: clipped at the total number of control modes, so user can enter very large value to ensure all modes are probed).
 
 A poke sequence is defined as follows: from an intial state of zero (no selfRM poke), a single mode poke is added with amplitude `mfilt.selfRM.pokeampl` and sign `+` or `-`. Once applied, the poke is held for  `mfilt.selfRM.zsize` loop iterations, over which WFS mode values are recorded and added to the measurement. An additional  `mfilt.selfRM.nbsettle` loop iterations are added before the next poke to ensure the DM settles.
 
