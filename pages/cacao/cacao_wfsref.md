@@ -40,6 +40,13 @@ cacao-aorun-071-zpo start
 
 ### 2.3. Applying WFS-space offset to WFS reference
 
+ZPO is applied by subtracting aol_wfszpo from aol_wfsref, with the result written in aol_wfsrefc.
+
+```bash
+cacao-fpsctrl setval acquWFS WFSrefcmult 1.0
+cacao-fpsctrl setval acquWFS WFSrefcgain 0.0
+cacao-fpsctrl setval acquWFS comp.WFSrefc ON
+```
 
 
 
