@@ -17,11 +17,30 @@ folder: cacao
 
 ## 2. Zero Point Offsetting (zpo)
 
+Zero point offsetting is handled by 3 processes:
+- DMch2disp to select and sum DM channels to the dmzop DM-space offset
+- zpo to convert DM-space offset to WFS-space offset
+- acquWFS to apply wfszpo to the reference
+
+
+### 2.1. Selecting DM channels for offsetting
+
+Select DM channels to be included in zpo within process .
+```bash
+cacao-fpsctrl setval DMch2disp zpoffset.ch08 ON
+cacao-fpsctrl setval DMch2disp zpoffset.ch09 ON
+```
+
+### 2.2. Converting DM-space offset to WFS-space offset
+
+The ZPO process takes as input stream aol_dmzpo and computes the correspoding WFS-space reference offset aol_wfszpo by multiplication by the zonal response matrix. To start the process:
 ```bash
 cacao-aorun-071-zpo start
 ```
 
-Select DM channels to be included in zpo.
+### 2.3. Applying WFS-space offset to WFS reference
+
+
 
 
 ## 3. Unbiased Correction (zero-mean correction)
