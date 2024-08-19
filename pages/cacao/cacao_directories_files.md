@@ -60,26 +60,29 @@ mkdir -p conftest1
 cp ./conf/zrespM.fits ./conftest1/
 
 
+# Have all cacao scripts below work in conftest1
+export CACAO_CONFWDIR="conftest1"
+
 # Create Zernike-Fourier modes
-CACAO_CONFWDIR="conftest1" cacao-aorun-028-mkZFmodes -c0 0 -c1 32 -c 50 -ea 2.0 -t 1.0 -a 0.3
+cacao-aorun-028-mkZFmodes -c0 0 -c1 32 -c 50 -ea 2.0 -t 1.0 -a 0.3
 # output:
 # conftest1/RMmodesDM/modesZF0.fits (not apodized)
 # conftest1/RMmodesDM/modesZF.fits (apodized)
 
 # Create the corresponding response
-CACAO_CONFWDIR="conftest1" cacao-aorun-034-RMzonal2modal modesZF
+cacao-aorun-034-RMzonal2modal modesZF
 # output:
 # conftest1/RMmodesDM.fits
 # conftest1/RMmodesWFS.fits
 
 # Compute the corresponding control matrix using the by-block algorithm
-CACAO_CONFWDIR="conftest1" cacao-aorun-045-compCM-byblocks 0.06 1
+cacao-aorun-045-compCM-byblocks 0.1 1
 # output:
 # conftest1/CMmodesDM.fits
 # conftest1/CMmodesDM.fits
 
 # Load the CM to shared memory, copy to main conf and log
-CACAO_CONFWDIR="conftest1" cacao-aorun-042-loadCM
+cacao-aorun-042-loadCM
 
 ```
 
