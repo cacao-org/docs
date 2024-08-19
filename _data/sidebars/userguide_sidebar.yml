@@ -69,6 +69,9 @@ entries:
       url: /cacao_compute_units.html
       output: web
 
+    - title: Files and Directories
+      url: /cacao_directories_files.html
+      output: web
 
   - title: Running a loop, steps
     output: web, pdf

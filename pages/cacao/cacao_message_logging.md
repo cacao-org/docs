@@ -147,23 +147,23 @@ cacao-msglogCTRL stop
 Processing of the low-level fpsCTRL log to the daily log is running within a tmux session. To view the output in real time, with colors:
 
 ~~~bash
-tmux a -t fpsCTRLlog-$CACAO_LOOPNAME-out-vispyr2
+tmux a -t fpsCTRLlog-out-$CACAO_LOOPNAME
 ~~~
 
 {% include image.html file="fpsCTRLlog-daily-tmux.png" caption="Content of fpsCTRL processing tmux session" %}
 
 ### 2.3. Adding custom log entries to the daily cacao log
 
-The `cacao-log` command adds custom log entries. To add a single entry in the daily cacao log:
+The `cacao-msglogCLI` command adds custom log entries. To add a single entry in the daily cacao log:
 
 ~~~bash
-cacao-log "custom log entry"
+cacao-msglogCLI "custom log entry"
 ~~~
 
 To start an interactive (persistent) logging terminal with a keyword (=category):
 
 ~~~bash
-cacao-log -k "WEATHER" -i
+cacao-msglogCLI -k "WEATHER" -i
 ~~~
 
 {% include image.html file="cacaolog-custom.png" caption="Example use of custom log entries, interactive mode" %}

@@ -21,20 +21,58 @@ cacao-loop-deploy -c <examplename>
 ```
 <span class="label label-info">Tip</span> Run command cacao-loop-deploy with -h option to see list of examples.
 
+The command will create a `-conf` directory holding configuration files:
+- `cacaovars.bash` defines the AO loop name, number, key parameters and list of processes to deploy
+- `fpssetup.setval.conf` has custom (non-default) settings for FPS entries
+- `tasklist.txt` is the list of deployment tasks to be performed.
 
+The `tasklist.txt` usually doesn't need to be edited.
+
+
+You may also create the directory and populate it with the required files without downloading the example.
+
+
+### 1.2. Editing the `cacaovars.bash` file
+
+Edit file `<examplename>-conf/cacaovars.bash` as needed
 The loop number. loop name, DM index and DM simulation index can be changed from their default values by setting the corresponding environment variables. For example:
 
-```bash
-CACAO_LOOPNUMBER=7 cacao-loop-deploy -c <examplename>
-CACAO_LOOPNUMBER=7 CACAO_DMINDEX="03" cacao-loop-deploy -c <examplename>
-```
+<pre>
+CACAO_LOOPNUMBER=7 cacao-loop-deploy -c examplename
+CACAO_LOOPNUMBER=7 CACAO_DMINDEX="03" cacao-loop-deploy -c examplename
+</pre>
 
-OPTIONAL: Edit file <examplename>-conf/cacaovars.bash as needed
+### 1.3. Editing the `fpssetup.setval.conf` file
+
+The file has entries in the form:
+<pre>
+setval mlat-LOOPNUMBER.NBiter 453
+</pre>
+The `LOOPNUMBER` word will automatically be replaced by the loop number upon deployment, so keep it such.
+
+This is where users can also configure deployment of processes on CPU sets and realtime priorities:
+<pre>
+setval mlat-LOOPNUMBER.procinfo.RTprio 40
+setval mlat-LOOPNUMBER.procinfo.cset aolRT0
+</pre>
+
+
+### 1.3. Editing the `tasklist.txt` file
+
+A minimum working `tasklist.txt` file is:
+<pre>
+INITSETUP            Initial setup
+TESTCONFIG           Test configuration
+CACAOSETUP           Run cacao-setup
+</pre>
+
 
 
 ## 2. Deploy processes and tmux sessions
 
 ### 2.1. Run deployment (starts the conf processes):
+
+Once the files in the `-conf` directory have been edited:
 
 ```bash
 cacao-loop-deploy -r <examplename>

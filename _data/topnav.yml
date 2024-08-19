@@ -24,6 +24,10 @@ topnav_dropdowns:
       folderitems:
         - title: Tech Notes
           url: /cacao_technotes_about.html
+    - title: Telemetry Analysis
+      folderitems:
+        - title: Linear mapping
+          url: /cacao_telemetry_linearmapping.html
     - title: Contributing
       folderitems:
         - title: Writing Documentation

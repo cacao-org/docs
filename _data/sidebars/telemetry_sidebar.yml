@@ -1,0 +1,26 @@
+entries:
+- title: Telemetry Analysis
+  product: cacao - Telemetry Analysis
+  folders:
+
+
+  - title: Overview
+    output: web, pdf
+    folderitems:
+
+    - title: Data synchronization
+      url: /cacao_telemetry_datasyncronization.html
+      output: web
+
+
+
+
+  - title: Mapping Functions
+    output: web, pdf
+    folderitems:
+
+    - title: Linear Mapping
+      url: /cacao_telemetry_linearmapping.html
+      output: web
+
+
