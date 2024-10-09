@@ -45,12 +45,10 @@ the uploading to shared memory can disrupt a running AO loop. Use the `-nl` (no 
 
 With the environment variable `CACAO_CONFWDIR` set, the configuration working directory (default `conf`) will be changed to `CACAO_CONFWDIR`.
 
-{% include important.html content="
-Except for script `cacao-aorun-042-loadCM`, cacao scripts will only upload files to memory if the configuration working directory is set to `conf` (default), ensuring that calibration files can be handled without affecting the current loop configuration or status.
-" %}
 
 
-For example:
+
+In this example, a custom set of control modes is computed and stored in directory `conftest1`. At the end of this example, the resulting control modes are loaded to shared memory:
 ```bash
 # All commands executed from LOOPROOTDIR
 # Create new configuration directory
@@ -72,7 +70,7 @@ cacao-aorun-028-mkZFmodes -c0 0 -c1 32 -c 50 -ea 2.0 -t 1.0 -a 0.3
 # Create the corresponding response
 cacao-aorun-034-RMzonal2modal modesZF
 # output:
-# conftest1/RMmodesDM.fits
+# conftest1/RMmodesDM.fits (sym link to input modesZF.fits)
 # conftest1/RMmodesWFS.fits
 
 # Compute the corresponding control matrix using the by-block algorithm
