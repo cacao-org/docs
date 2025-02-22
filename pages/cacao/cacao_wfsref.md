@@ -17,6 +17,8 @@ folder: cacao
 
 ## 2. Zero Point Offsetting (zpo)
 
+What is zpo ?
+
 Zero point offsetting is handled by 3 processes:
 - DMch2disp to select and sum DM channels to the dmzop DM-space offset
 - zpo to convert DM-space offset to WFS-space offset
