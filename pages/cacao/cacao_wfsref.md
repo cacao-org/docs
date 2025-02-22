@@ -17,7 +17,7 @@ folder: cacao
 
 ## 2. Zero Point Offsetting (zpo)
 
-What is zpo ?
+Zero-Point Offsetting (zpo) allows for some DM channels to NOT be corrected by the AO loop. When writing a DM command as a zero-point offset, the command will be applied to the convergence point of the loop instead of being corrected. This is done by changing the WFS reference.
 
 Zero point offsetting is handled by 3 processes:
 - DMch2disp to select and sum DM channels to the dmzop DM-space offset
