@@ -20,7 +20,7 @@ folder: cacao
 Zero-Point Offsetting (zpo) allows for some DM channels to NOT be corrected by the AO loop. When writing a DM command as a zero-point offset, the command will be applied to the convergence point of the loop instead of being corrected. This is done by changing the WFS reference.
 
 Zero point offsetting is handled by 3 processes:
-- DMch2disp to select and sum DM channels to the dmzop DM-space offset
+- DMch2disp to select and sum DM channels to the dmzop DM-space offset. The zpo-selected channels will be added onto stream `aolX_dmzpo`.
 - zpo to convert DM-space offset to WFS-space offset
 - acquWFS to apply wfszpo to the reference
 
